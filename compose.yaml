@@ -1,0 +1,44 @@
+services:
+  trigger-etl-data-upload-service:
+    depends_on:
+        - sql-server-service
+    build:
+      context: ./trigger-etl-data-upload-service
+      dockerfile: Dockerfile
+    env_file:
+      - ./trigger-etl-data-upload-service/.env
+    networks:
+      - service-network
+    hostname: trigger-etl-data-upload-service
+    ports:
+      - 8014:8000 
+    # volumes:
+    #   - ./trigger-etl-data-upload-service/app/api:/trigger-etl-data-upload-service/app/api
+  load-data-file-service:
+    depends_on:
+      - sql-server-service
+    build:
+      context: ./load-data-file-service
+      dockerfile: Dockerfile
+    env_file:
+      - ./load-data-file-service/.env
+    networks:
+      - service-network
+    hostname: load-data-file-service
+    ports:
+      - 8015:8000 
+    # volumes:
+    #   - ./load-data-file-service/app:/load-data-file-service/app
+  
+  sql-server-service:
+    build:
+      context: .
+      dockerfile: /sql-server/Dockerfile
+    ports:
+      - 1433:1433
+    # volumes:
+    #   - ./sql-server:/development
+    networks:
+      - service-network
+networks:
+  service-network:
