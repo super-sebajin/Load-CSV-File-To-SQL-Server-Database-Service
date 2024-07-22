@@ -12,6 +12,7 @@ services:
     hostname: trigger-etl-data-upload-service
     ports:
       - 8014:8000 
+    # LOCAL DEVELOPMENT  
     # volumes:
     #   - ./trigger-etl-data-upload-service/app/api:/trigger-etl-data-upload-service/app/api
   load-data-file-service:
@@ -27,6 +28,7 @@ services:
     hostname: load-data-file-service
     ports:
       - 8015:8000 
+    # LOCAL DEVELOPMENT  
     # volumes:
     #   - ./load-data-file-service/app:/load-data-file-service/app
   
@@ -36,6 +38,7 @@ services:
       dockerfile: /sql-server/Dockerfile
     ports:
       - 1433:1433
+    # LOCAL DEVELOPMENT  
     # volumes:
     #   - ./sql-server:/development
     networks:

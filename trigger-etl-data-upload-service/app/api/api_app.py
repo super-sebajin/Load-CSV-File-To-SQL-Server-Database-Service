@@ -44,8 +44,8 @@ async def delete():
 
 
 
+# LOCAL DEVELOPMENT
+# if __name__ == "__main__":
+#     import uvicorn
 
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run(app="api_app:app", host="0.0.0.0", port=8014, reload=True)
+#     uvicorn.run(app="api_app:app", host="0.0.0.0", port=8014, reload=True)
