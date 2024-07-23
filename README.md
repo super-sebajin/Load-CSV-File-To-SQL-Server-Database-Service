@@ -10,3 +10,5 @@ This project uses `docker-compose` to generate a `Microsoft SQL Server` Instance
 unto to the third container that contains the `Microsoft SQL Server` instance.
 
 The project is fairly new, so it will lack in documentation, however to run all you need to is to execute `docker-compose` with the appropriate arguments. A simple `docker-compose up -d` should do the job.
+
+I will also routinely clean up the project as many things from development are still present.
