@@ -1,6 +1,4 @@
-
-
-
+# use this to test your app
 def hello_world():
     print("Hello world!")
 
