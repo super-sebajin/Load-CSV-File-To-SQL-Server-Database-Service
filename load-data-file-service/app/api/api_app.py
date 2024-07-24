@@ -1,6 +1,4 @@
-from fastapi import FastAPI, HTTPException, File, UploadFile
-import os
-import subprocess
+from fastapi import FastAPI, HTTPException, UploadFile
 
 app = FastAPI()
 
@@ -11,6 +9,10 @@ async def root():
 
 @app.put("/receive_file/{date}")
 async def receive_file(date:str, app_data: UploadFile):
+    
+    import os
+    import subprocess
+
     if app_data.content_type != "text/csv":
         raise HTTPException(status_code=400, detail=f"wrong file type: {app_data.content_type}")
     
