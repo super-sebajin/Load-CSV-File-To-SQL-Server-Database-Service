@@ -36,8 +36,10 @@ def delete_data():
     import app.workers.db as db
 
     with db.cursor:
+        
         db.cursor.execute(f"DELETE FROM FILE_NAME;")
         db.cursor.execute(f"DELETE FROM FILE_DATA;")
+        
         db.cursor.commit()
 
     return {"response": f"Database cleared"}
