@@ -3,9 +3,6 @@ import os
 from dotenv import load_dotenv
 import subprocess
 
-
-UPLOAD_DIR = ""
-
 load_dotenv()
 
 app = FastAPI()
