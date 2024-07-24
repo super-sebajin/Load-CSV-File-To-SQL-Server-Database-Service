@@ -13,9 +13,6 @@ WORKDIR /load-data-file-service
 COPY . .
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install perl-modules -y
-
-RUN apt-get update
 RUN apt-get install -y curl gnupg
 
 # Add Microsoft repository
