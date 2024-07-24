@@ -1,9 +1,6 @@
 from fastapi import FastAPI, HTTPException, File, UploadFile
 import os
-from dotenv import load_dotenv
 import subprocess
-
-load_dotenv()
 
 app = FastAPI()
 
