@@ -48,11 +48,12 @@ def do_db_job():
         with db.cursor:
             # 1. Inserta file name and throw error if the file had been sent already
             db.cursor.execute(f"{inserts['file-metadata']}")
-            db.cursor.commit()
-            
+
             # 2. Insert the data set
             db.cursor.execute(f"{inserts['file-data']}")
+            
             db.cursor.commit()
+        
         print("DB loading job Done!")
     
     except db.pyodbc.Error as err:
