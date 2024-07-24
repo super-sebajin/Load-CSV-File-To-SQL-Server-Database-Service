@@ -43,18 +43,21 @@ def make_statements() -> Dict:
 def do_db_job():
     import db
     inserts = make_statements()
-    with db.cursor:
-        # 1. Inserta file name and throw error if the file had been sent already
-        db.cursor.execute(f"{inserts['file-metadata']}")
-  
-        
-        # 2. Insert the data set
-        db.cursor.execute(f"{inserts['file-data']}")
-        
-        # 3. commit results
-        db.cursor.commit()
+    
+    try:
+        with db.cursor:
+            # 1. Inserta file name and throw error if the file had been sent already
+            db.cursor.execute(f"{inserts['file-metadata']}")
+            db.cursor.commit()
             
-    print("DB loading Done!")
+            # 2. Insert the data set
+            db.cursor.execute(f"{inserts['file-data']}")
+            db.cursor.commit()
+        print("DB loading job Done!")
+    
+    except db.pyodbc.Error as err:
+        print(f"Commit unsuccessful, please see the error message: {err}")
+        print("DB loading job unsuccessful!") 
 
 def clean_up():
     import os
